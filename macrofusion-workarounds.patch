@@ -1,0 +1,40 @@
+--- orig/macrofusion.py	2015-07-01 09:54:00.000000000 +0100
++++ macrofusion.py	2018-12-19 01:24:42.079795562 +0000
+@@ -39,24 +39,10 @@
+ __COPYRIGHT__='Dariusz Duma'
+ __WEBSITE__='http://sourceforge.net/p/macrofusion'
+ 
+-if os.path.exists('/usr/share/mfusion/ui/ui.xml') \
+-    and os.path.exists('/usr/share/mfusion/ui/progress.xml') \
+-    and os.path.exists('/usr/share/pixmaps/macrofusion.png') \
+-    and os.path.exists('/usr/share/mfusion/images/logoSplash.png'):
+-    # print ("System wide install!")
+-    DIR = '/usr/share/locale/'
+-    IMG = '/usr/share/pixmaps/'
+-    IMG2 = '/usr/share/mfusion/images/'
+-    UI = '/usr/share/mfusion/ui/'
+-elif os.path.exists(sys.path[0] + "/ui/ui.xml"):
+-    # print ("Local run!")
+-    DIR = sys.path[0] + '/locale/'
+-    IMG = sys.path[0] + '/images/'
+-    IMG2 = sys.path[0] + '/images/'
+-    UI = sys.path[0] + '/ui/'
+-else:
+-    print ("That's me, your MacroFusion. Make your mind - local or system wide install?")
+-    sys.exit(1)
++DIR = '/app/share/locale/'
++IMG = '/app/share/pixmaps/'
++IMG2 = '/app/share/mfusion/images/'
++UI = '/app/share/mfusion/ui/'
+     
+ import locale
+ from locale import gettext as _
+@@ -618,7 +604,7 @@
+ 
+     def pixbuf2Image(self, pb):
+         width,height = pb.get_width(),pb.get_height()
+-        return Image.fromstring("RGB",(width,height),pb.get_pixels() )
++        return Image.frombytes("RGB",(width,height),pb.get_pixels() )
+ 
+     def put_files_to_the_list(self, fichiers):
+         

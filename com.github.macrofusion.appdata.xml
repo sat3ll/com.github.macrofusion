@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.macrofusion</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <name>Macrofusion</name>
+  <summary>A GTK GUI for Enfuse</summary>
+  <description>
+    <p>
+      MacroFusion is a neat little GUI for the great tool `Enfuse`
+      (command line). It makes it easy to fuse many photos to one with great
+      DOF (Depth of Field) or DR (Dynamic Range). Useful for every macro
+      lover or landscaper.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://a.fsdn.com/con/app/proj/macrofusion/screenshots/2011-11-17-132052_946x795_scrot.png</image>
+      <caption>Main window</caption>
+    </screenshot>
+    <screenshot>
+        <image>https://a.fsdn.com/con/app/proj/macrofusion/screenshots/mf_02.jpg</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://github.com/salvadhor/macrofusion</url>
+  <developer_name>Dariusz Duma</developer_name>
+  <releases>
+    <release version="0.7.4" date="2015-10-23"/>
+  </releases>
+  <content_rating type="oars-1.0" />
+</component>
