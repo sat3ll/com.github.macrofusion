@@ -44,20 +44,6 @@ modules:
               tag: v0.26
               commit: fa449a4d2c58d63f0d75ff259f25683a98a44630
           buildsystem: cmake-ninja
-    - name: libtiff
-      cleanup:
-        - /bin
-        - /include
-        - /lib/*.a
-        - /lib/pkgconfig
-        - /share/man
-        - /share/doc    
-      sources:
-        - type: git
-          url: https://gitlab.com/libtiff/libtiff
-          tag: v4.0.10
-          commit: b8eac98dd0849c3f888518ce5cecc020f8b2991c
-      buildsystem: autotools
     - python-deps.json
     - name: exiftool
       sources:
