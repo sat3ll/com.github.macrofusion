@@ -24,7 +24,7 @@ modules:
           sha256: 8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406
       buildsystem: simple
       build-commands:
-        - ./bootstrap.sh --prefix=/app
+        - ./bootstrap.sh --prefix="${FLATPAK_DEST}"
         - ./b2 -j $FLATPAK_BUILDER_N_JOBS --build-type=minimal link=shared install
     - name: wxwidgets
       cleanup:
@@ -64,8 +64,8 @@ modules:
         - --without-python3-girdir
       build-options:
         env:
-            PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_GIRDIR: /app/share/gir-1.0
-            PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_TYPELIBDIR: /app/lib/girepository-1.0
+            PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_GIRDIR: "${FLATPAK_DEST}/share/gir-1.0"
+            PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_TYPELIBDIR: "${FLATPAK_DEST}/lib/girepository-1.0"
       sources:
         - type: archive
           url: https://download.gnome.org/sources/gexiv2/0.10/gexiv2-0.10.9.tar.xz
@@ -92,8 +92,8 @@ modules:
           sha1: 6aa2698e552495bf897b75c34b1c25f4e581a356
       buildsystem: simple
       build-commands:
-        - install -Dm755 exiftool /app/bin/exiftool
-        - cp -r lib /app/bin/
+        - install -Dm755 exiftool "${FLATPAK_DEST}/bin/exiftool"
+        - cp -r lib "${FLATPAK_DEST}/bin/"
     - name: ilmbase
       cleanup:
         - /include
@@ -217,9 +217,9 @@ modules:
           path: macrofusion-workarounds.patch
       buildsystem: simple
       build-commands:
-        - install -Dm755 macrofusion.py /app/bin/macrofusion.py
-        - install -Dm644 macrofusion.desktop /app/share/applications/macrofusion.desktop
-        - install -Dm644 images/logoSplash.png /app/share/mfusion/images
-        - install -Dm644 images/macrofusion.png /app/share/pixmaps/macrofusion.png
-        - cp -r locale /app/share
-        - cp -r ui /app/share/mfusion/ui
+        - install -Dm755 macrofusion.py "${FLATPAK_DEST}/bin/macrofusion.py"
+        - install -Dm644 macrofusion.desktop "${FLATPAK_DEST}/share/applications/macrofusion.desktop"
+        - install -Dm644 images/logoSplash.png "${FLATPAK_DEST}/share/mfusion/images"
+        - install -Dm644 images/macrofusion.png "${FLATPAK_DEST}/share/pixmaps/macrofusion.png"
+        - cp -r locale "${FLATPAK_DEST}/share"
+        - cp -r ui "${FLATPAK_DEST}/share/mfusion/ui"
