@@ -14,6 +14,18 @@ finish-args:
 modules:
     - shared-modules/glew/glew.json
     - shared-modules/glu/glu-9.0.0.json
+    - name: boost
+      cleanup:
+        - /include
+        - /lib/*.a
+      sources:
+        - type: archive
+          url: https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.bz2
+          sha256: 8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406
+      buildsystem: simple
+      build-commands:
+        - ./bootstrap.sh --prefix=/app
+        - ./b2 -j $FLATPAK_BUILDER_N_JOBS --build-type=minimal link=shared install
     - name: gexiv2
       cleanup:
         - /include
@@ -106,18 +118,6 @@ modules:
           path: fix-cmake.patch
       buildsystem: cmake
       modules:
-        - name: boost
-          cleanup:
-            - /include
-            - /lib/*.a
-          sources:
-            - type: archive
-              url: https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.bz2
-              sha256: 8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406
-          buildsystem: simple
-          build-commands:
-            - ./bootstrap.sh --prefix=/app
-            - ./b2 -j $FLATPAK_BUILDER_N_JOBS --build-type=minimal link=shared install
         - name: gsl
           cleanup:
             - /bin
