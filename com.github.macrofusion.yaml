@@ -26,6 +26,34 @@ modules:
       build-commands:
         - ./bootstrap.sh --prefix=/app
         - ./b2 -j $FLATPAK_BUILDER_N_JOBS --build-type=minimal link=shared install
+    - name: wxwidgets
+      cleanup:
+        - /bin
+        - /lib
+        - /doc
+        - /share
+        - /include
+      sources:
+        - type: archive
+          url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.4/wxWidgets-3.0.4.tar.bz2
+          sha256: 96157f988d261b7368e5340afa1a0cad943768f35929c22841f62c25b17bf7f0
+      config-opts:
+        - --with-opengl
+        - --with-libjpeg
+        - --with-libtiff
+        - --with-libpng
+        - --with-zlib
+        - --enable-unicode
+        - --enable-display
+        - --enable-propgrid
+        - --disable-sdltest
+        - --disable-webkit
+        - --disable-webview
+        - --disable-webviewwebkit
+        - --with-expat=builtin
+        - --with-libiconv=/usr
+      build-options:
+        cxxflags: "-std=c++0x"
     - name: gexiv2
       cleanup:
         - /include
@@ -133,34 +161,6 @@ modules:
             - type: archive
               url: https://ftpmirror.gnu.org/gnu/gsl/gsl-2.5.tar.gz
               sha256: 0460ad7c2542caaddc6729762952d345374784100223995eb14d614861f2258d
-    - name: wxwidgets
-      cleanup:
-        - /bin
-        - /lib
-        - /doc
-        - /share
-        - /include
-      sources:
-        - type: archive
-          url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.4/wxWidgets-3.0.4.tar.bz2
-          sha256: 96157f988d261b7368e5340afa1a0cad943768f35929c22841f62c25b17bf7f0
-      config-opts:
-        - --with-opengl
-        - --with-libjpeg
-        - --with-libtiff
-        - --with-libpng
-        - --with-zlib
-        - --enable-unicode
-        - --enable-display
-        - --enable-propgrid
-        - --disable-sdltest
-        - --disable-webkit
-        - --disable-webview
-        - --disable-webviewwebkit
-        - --with-expat=builtin
-        - --with-libiconv=/usr
-      build-options:
-        cxxflags: "-std=c++0x"
     - name: libpano13
       cleanup:
         - /bin
