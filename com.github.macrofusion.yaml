@@ -93,8 +93,8 @@ modules:
   - name: exiftool
     sources:
       - type: archive
-        url: https://sno.phy.queensu.ca/~phil/exiftool/Image-ExifTool-11.25.tar.gz
-        sha1: f8e59eb80e651b6b0be68fc039ba35f7f271ec68
+        url: https://owl.phy.queensu.ca/~phil/exiftool/Image-ExifTool-11.26.tar.gz
+        sha1: 136e9ed3a60b231ded47087ad0f7a5d478af2592
     buildsystem: simple
     build-commands:
       - install -Dm755 exiftool "${FLATPAK_DEST}/bin/exiftool"
